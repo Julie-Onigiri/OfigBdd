@@ -1,48 +1,48 @@
 const path = require('path');
-const dataMapper = require ('../dataMapper/dataMapper.js');
-
+const articleDataMapper = require('../dataMapper/dataMapper.js');
 
 
 const mainController = {
 
   // méthode pour la page d'accueil
- async homePage (request, response){
-    // const filePath = path.resolve(__dirname + '/../../integration/accueil.html');
-    // response.sendFile(filePath);
+  async homePage(req, res) {
     try {
-      // je récupere les figurines dans ma base de données
-      const figurines = await dataMapper.getAllFigurines();
- 
-    response.render('accueil',{
-      figurines
-    });
-  } catch (error) {
-    // Pour notre information, on va afficher l'erreur dans la console
-    console.trace(error);
-    // Si j'ai une erreur, je vais envoyer une erreur 500
-    response.status(500).send('Erreur serveur');
-  
-}
- }
-,
- // méthode pour la page article
-  async articlePage (request, response)  {
-    try {
-      const articleId = parseInt(request.params.id);
-      // const filePath = path.resolve(__dirname + '/../../integration/article.html');
-      // response.sendFile(filePath);
-      const figurine = await dataMapper.getOneFigurine(articleId);
-     
+      const allFigurine = await articleDataMapper.getAllFigurines();
+      //console.log(allFigurine);
 
-      return response.render('article',{article:figurine});
-  } catch (error) {
+      res.render('accueil', {
+        allFigurine,
+      });
+      //const filePath = path.resolve(__dirname + '/../../integration/accueil.html');
+      //response.sendFile(filePath);
+
+    } catch (error) {
+      // Pour notre information, on va afficher l'erreur dans la console
       console.trace(error);
-      response.status(500).send('Erreur serveur');
+
+      // Si j'ai une erreur, je vais envoyer une erreur 500
+      res.status(500).send('Erreur serveur');
+    }
+
+
+  },
+
+  // méthode pour la page article
+  async articlePage(req, res) {
+    const id = req.params.id;
+    //console.log(id);
+
+    const figurine = await articleDataMapper.getOneFigurine(id);
+
+    res.render(`article`, {
+      figurine,
+    });
+
+    //const filePath = path.resolve(__dirname + '/../../integration/article.html');
+    //response.sendFile(filePath);
   }
 
-}
-  };
-
+};
 
 
 module.exports = mainController;

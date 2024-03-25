@@ -1,4 +1,6 @@
-<%- include('partials/header') %>
+<%- include('./partials/header') %>
+
+
   <!-- Page Content -->
   <div class="container container-main">
 
@@ -13,39 +15,27 @@
               <th></th>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <img class="img-thumbnail img-cart-list" src="./images/tifa.png" alt="">
-                  <div class="item-description">
-                      <h5 class="item-title">Tifa</h5>
-                  </div>
-                </td>
+                <% //console.log(foundFigurine) %>
+                <% for(figurine of foundFigurine) { %>
+                    
+                    <tr>
+                        <td>
+                          <img class="img-thumbnail img-cart-list" src="/images/<%= figurine.name.toLowerCase() %>.png" alt="">
+                          <div class="item-description">
+                              <h5 class="item-title"><%= figurine.name %></h5>
+                          </div>
+                        </td>
+        
+                        <td>
+                          <p class="item-subtotal">$<%= figurine.price %></p>
+                        </td>
+        
+                        <td>
+                          <a href="#">Enlever de la liste</a>
+                        </td>
+                      </tr>
 
-                <td>
-                  <p class="item-subtotal">$24.99</p>
-                </td>
-
-                <td>
-                  <a href="#">Enlever de la liste</a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <img class="img-thumbnail img-cart-list" src="./images/cloud.png" alt="">
-                  <div class="item-description">
-                      <h5 class="item-title">Cloud</h5>
-                  </div>
-                </td>
-
-                <td>
-                  <p class="item-subtotal">$49.98</p>
-                </td>
-
-                <td>
-                  <a href="#">Enlever de la liste</a>
-                </td>
-              </tr>
+                <% } %>
 
           </table>
 
@@ -61,5 +51,6 @@
       </div>
   </div>
 
+  <%- include('./partials/footer') %>
 
-  <%- include('partials/footer') %>
+  

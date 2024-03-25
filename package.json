@@ -1,20 +1,21 @@
 {
-  "name": "s04e06-atelier-ofig-julie-onigiri",
-  "version": "1.0.0",
-  "description": "## Étape 1: Mise en place",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
- "start" : "node index.js",
-    "dev": "nodemon index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
     "ejs": "^3.1.9",
     "express": "^4.19.1",
+    "express-session": "^1.18.0",
     "pg": "^8.11.3"
-  }
+  },
+  "name": "s04e06-atelier-ofig-Julie-Onigiri",
+  "description": "## Étape 1: Mise en place",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch index.js",
+    "stop": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

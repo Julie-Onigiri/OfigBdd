@@ -1,38 +1,35 @@
-<%- include('partials/header') %>
+<%- include('./partials/header') %>
 
-  <!-- Page Content -->
+<!-- Page Content -->
   <div class="container container-main">
 
     <div class="row">
 
-        <%- include('partials/leftMenu') %>
-    
-          </div>
-      <!-- /.col-lg-3 -->
+    <%- include('./partials/left-menu') %>
 
       <div class="col-lg-9">
 
         <div class="row">
-          
-          <div class="col-lg-6"><% console.log(article) %>
-            <img class="" src="/images/<%=article.name.toLowerCase()%>.png" alt="">
+          <div class="col-lg-6">
+            <% console.log(figurine) %>
+            <img class="" src="/images/<%= figurine.name.toLowerCase() %>.png" alt="">
           </div>
 
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
                   <h3 class="card-title">
-                    <%=article.name.toLowerCase()%>
-                    <div class="badge badge-pill badge-<%=article.category.toLowerCase()%>"><%=article.category%></div>
+                    <%= figurine.name %>
+                    <div class="badge badge-pill badge-<%= figurine.category.toLowerCase() %>"><%= figurine.category %></div>
                   </h3>
-                  <p class="card-text">Taille réelle : 35cm</p>
-                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, porro sunt quis sed ut facere consequatur quidem magni pariatur repellat eius? Incidunt voluptatem porro exercitationem asperiores maiores voluptatibus necessitatibus. Nobis fuga eaque aliquam quod, voluptatem minus illo necessitatibus at placeat delectus quos distinctio natus ipsum cumque amet repellat quo quidem.</p>
+                  <p class="card-text">Taille réelle : <%= figurine.size %>cm</p>
+                  <p class="card-text"><%= figurine.description %></p>
                   <p class="card-text">3
                     Note moyenne : &#9733; &#9733; &#9733; &#9733; &#9734;
                     <br>
                     <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
                   </p>
-                  <h5>$24.99</h5>
+                  <h5>$<%= figurine.price %></h5>
                   <p class="card-text">
                     <a href="#" class="link-add-bookmarks">+ Ajouter aux favoris</a>
                   </p>
@@ -94,4 +91,4 @@
     </div>
   </div>
 
-  <%- include('partials/footer') %>
+  <%- include('./partials/footer') %>

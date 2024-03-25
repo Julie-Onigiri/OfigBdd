@@ -1,34 +1,22 @@
 const client = require('../database');
 
-const dataMapper = {
+const articleDataMapper = {
+    async getAllFigurines() {
+        const result = await client.query('SELECT * FROM figurine');
 
-async getAllFigurines(){
+        //console.log(test);
+        return result.rows;
 
-    const query ='SELECT * FROM figurine;'
-    const resultFigurines = await client.query(query);
+    },
 
-    return resultFigurines.rows;
-},
-async getOneFigurine(id) {
-    const foundFigurine = await client.query(`SELECT * FROM figurine WHERE id = $1`,[id]);
-        
-        
+    async getOneFigurine(id) {
+        const result = await client.query('SELECT * FROM figurine WHERE id=$1', [id]);
 
+        //console.log(test);
+        return result.rows[0];
 
-   
-// console.log(foundFigurine);
-// if (!resultOneFigurine.rows.length) {
-//     const error = new Error("La figurine n'existe pas");
-//     error.statusCode = 404;
+    },
 
-    // * le mot clé throw permet de lever une erreur et on coupe l'exécution du code
-//     throw error;
-// }
+}
 
-    return foundFigurine.rows[0];
-},
-
-
-};
-
-module.exports = dataMapper;
+module.exports = articleDataMapper;

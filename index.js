@@ -2,11 +2,11 @@
 require('dotenv').config();
 
 const express = require('express');
+const expressSession = require('express-session');
+
 
 // on importe le router
 const router = require('./app/router');
-// les réglages de express pour utiliser EJS et le bon dossier de views.
-
 
 // un peu de config
 const PORT = process.env.PORT || 5000;
@@ -14,13 +14,29 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+// On défini le moteur de template
+app.set('view engine', 'ejs');
+// On défini le dossier contenant les vues
+app.set('views', __dirname + '/app/views');
+
+// Sessions
+app.use(expressSession({
+  resave: true,
+  saveUninitialized: true,
+  secret: "Guess it!",
+  cookie: {
+    secure: false,
+    maxAge: (1000 * 60 * 60) // ça fait une heure
+  }
+}));
+
+
 // servir les fichiers statiques qui sont dans "integration"
 app.use(express.static('integration'));
 
 // routage !
 app.use(router);
-app.set('view engine', 'ejs');
-app.set('views', './app/views');
+
 
 // on lance le serveur
 app.listen(PORT, () => {
