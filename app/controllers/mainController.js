@@ -4,8 +4,9 @@ const mainController = {
 
   // méthode pour la page d'accueil
   homePage: (request, response) => {
-    const filePath = path.resolve(__dirname + '/../../integration/accueil.html');
-    response.sendFile(filePath);
+    // const filePath = path.resolve(__dirname + '/../../integration/accueil.html');
+    // response.sendFile(filePath);
+    response.render('accueil')
   },
 
   // méthode pour la page article
