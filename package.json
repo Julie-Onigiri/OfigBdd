@@ -6,7 +6,7 @@
     "express-session": "^1.18.0",
     "pg": "^8.11.3"
   },
-  "name": "s04e06-atelier-ofig-Julie-Onigiri",
+  "name": "ofig-Julie-Onigiri",
   "description": "## Étape 1: Mise en place",
   "version": "1.0.0",
   "main": "index.js",
